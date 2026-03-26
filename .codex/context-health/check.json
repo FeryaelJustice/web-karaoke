@@ -1,0 +1,14 @@
+{
+  "auditedAt": "2026-03-18T17:08:31.6926579Z",
+  "projectRoot": "C:\\Users\\nano9\\OneDrive\\Escritorio\\Stuff\\Professional\\Business\\FeryaelJustice\\Developer\\Stuff\\AI\\web-karaoke",
+  "status": "healthy",
+  "score": 100,
+  "staleReasons": [
+    "file_set_changed"
+  ],
+  "filesReviewed": [
+    "AGENTS.md"
+  ],
+  "findingCount": 0,
+  "findings": []
+}
