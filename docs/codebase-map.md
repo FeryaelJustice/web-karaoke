@@ -25,7 +25,7 @@ Archivo principal con cuatro responsabilidades mayores:
 
 1. Control del reproductor de audio
 2. Busqueda/carga de letras sincronizadas
-3. Analisis linguistico asistido por IA
+3. Analisis lingüístico asistido por IA
 4. Creacion manual de archivos LRC
 
 ## Otros archivos clave
@@ -54,6 +54,6 @@ Archivo principal con cuatro responsabilidades mayores:
 - calculo de `currentLineIndex`
 - mezcla incremental de `analysis`
 - drag and drop de audio y LRC
-- generacion de timestamps en el taller manual
-- cambio de tab sincronizado con scroll automatico
+- generación de timestamps en el taller manual
+- cambio de tab sincronizado con scroll automático
 - futura extraccion de hooks y componentes desde `src/App.jsx`

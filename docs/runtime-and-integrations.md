@@ -19,12 +19,12 @@ Piezas principales:
 
 Uso:
 
-- endpoint de busqueda: `https://lrclib.net/api/search?q=...`
+- endpoint de búsqueda: `https://lrclib.net/api/search?q=...`
 - filtro local: solo se conservan resultados con `syncedLyrics`
 
 Comportamiento:
 
-- la busqueda se bloquea si no hay texto o si `navigator.onLine` es falso
+- la búsqueda se bloquea si no hay texto o si `navigator.onLine` es falso
 - los resultados se limitan a 5 canciones
 
 ### Gemini Generative Language API
@@ -38,7 +38,7 @@ Uso:
 Comportamiento:
 
 - si falta `VITE_GEMINI_API_KEY`, la app muestra error y no lanza la peticion
-- el prompt del sistema exige respuesta corta en espanol
+- el prompt del sistema exige respuesta corta en español
 - la app solicita JSON con schema explicito
 - hay reintentos con backoff simple: 2s, 4s, 8s
 - si fallan todos los intentos, se genera un fallback local
@@ -54,7 +54,7 @@ Comportamiento:
 
 - No usar claves hardcodeadas en `src/App.jsx`.
 - Definir `VITE_GEMINI_API_KEY` en `.env` para desarrollo.
-- Para produccion, interponer backend o edge function en vez de exponer la clave real al navegador.
+- Para producción, interponer backend o edge function en vez de exponer la clave real al navegador.
 
 ## Modo offline
 
@@ -63,12 +63,12 @@ La app escucha eventos `online` y `offline` del navegador.
 Efectos actuales:
 
 - muestra banner de desconexion
-- bloquea busqueda remota
-- bloquea analisis IA
+- bloquea búsqueda remota
+- bloquea análisis IA
 
 Lo que sigue funcionando sin red:
 
-- reproduccion de audio local
+- reproducción de audio local
 - carga de `.lrc` local
 - taller manual de creacion LRC
 - navegacion de la UI
@@ -81,7 +81,7 @@ Lo que sigue funcionando sin red:
 - Falta configurar pruebas y lint.
 
 
-## Migracion Gemini
+## Migración Gemini
 
-La app usa el SDK oficial @google/genai en JavaScript en lugar del fetch manual al endpoint generateContent. El analisis se procesa en serie con chunks pequenos, backoff exponencial y reintento automatico ante 429/cuota temporal.
+La app usa el SDK oficial @google/genai en JavaScript en lugar del fetch manual al endpoint generateContent. El análisis se procesa en serie con chunks pequeños, backoff exponencial y reintento automático ante 429/cuota temporal.
 
