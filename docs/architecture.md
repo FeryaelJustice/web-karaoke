@@ -2,7 +2,7 @@
 
 ## Resumen
 
-`web-karaoke` es una aplicacion cliente de una sola pantalla orientada a aprendizaje de idiomas mediante canciones. El diseno actual centraliza toda la logica de negocio, estado y render en un unico componente React dentro de un runtime Vite.
+`web-karaoke` es una aplicación cliente de una sola pantalla orientada a aprendizaje de idiomas mediante canciones. El diseño actual centraliza toda la lógica de negocio, estado y render en un único componente React dentro de un runtime Vite.
 
 ## Contexto arquitectonico
 
@@ -16,7 +16,7 @@
 
 ## Dominios funcionales
 
-### 1. Audio y reproduccion
+### 1. Audio y reproducción
 
 Responsabilidades:
 
@@ -26,7 +26,7 @@ Responsabilidades:
 - controlar seek
 - controlar volumen y mute
 - modificar velocidad
-- ajustar offset de sincronizacion
+- ajustar offset de sincronización
 
 Estado asociado:
 
@@ -48,7 +48,7 @@ Ref principal:
 
 Fuentes soportadas:
 
-- busqueda remota en LRCLIB
+- búsqueda remota en LRCLIB
 - carga local de archivo `.lrc`
 - creacion manual dentro de la app
 
@@ -62,13 +62,13 @@ Estado asociado:
 - `isJapaneseLyrics`
 - `lrcInputRef`
 
-Funcion central:
+Función central:
 
 - `parseLRC()` transforma texto LRC en `{ time, text }[]`
 
 ### 3. Analisis IA incremental
 
-El analisis se hace por bloques de tamano fijo (`CHUNK_SIZE = 8`) para reducir errores de red y permitir continuacion manual.
+El análisis se hace por bloques de tamaño fijo (`CHUNK_SIZE = 8`) para reducir errores de red y permitir continuacion manual.
 
 Estado asociado:
 
@@ -85,9 +85,9 @@ Pipeline:
 1. `processNextChunk()` selecciona el siguiente bloque
 2. `fetchChunkWithRetry()` llama a Gemini con reintentos
 3. La respuesta se mezcla con el estado existente
-4. Se actualiza progreso y se habilita continuar si quedan lineas
+4. Se actualiza progreso y se habilita continuar si quedan líneas
 
-Salida del analisis:
+Salida del análisis:
 
 - `karaoke_pronunciation`
 - `word_breakdown`
@@ -97,7 +97,7 @@ Salida del analisis:
 
 Responsabilidades:
 
-- partir texto plano en lineas
+- partir texto plano en líneas
 - marcar timestamps usando el audio actual
 - limpiar marcas individuales
 - generar contenido LRC descargable
@@ -122,28 +122,34 @@ creatorLines -> generateLrcString -> descarga o carga al reproductor
 
 ## Sincronizacion de UI
 
-La linea activa se deriva de:
+La línea activa se deriva de:
 
 - `effectiveTime = currentTime - syncOffset`
-- busqueda del rango entre timestamp actual y siguiente linea
+- búsqueda del rango entre timestamp actual y siguiente línea
 
-Con ese indice se sincronizan tres zonas:
+Con ese índice se sincronizan tres zonas:
 
 - lista de karaoke
 - tarjetas de diccionario
-- bloques de analisis por frases
+- bloques de análisis por frases
 
-Ademas, un `useEffect` hace scroll automatico del elemento activo en cada panel.
+Además, un `useEffect` hace scroll automático del elemento activo en cada panel.
 
 ## Dependencias implicitas
 
-Dependencias y runtime actuales:\n\n- React\n- `lucide-react`\n- Vite\n- Tailwind CSS v4 mediante `@tailwindcss/vite`\n- alias `@` configurado sobre `src`
+Dependencias y runtime actuales:
+
+- React
+- `lucide-react`
+- Vite
+- Tailwind CSS v4 mediante `@tailwindcss/vite`
+- alias `@` configurado sobre `src`
 
 ## Deuda tecnica actual
 
-- Componente unico de gran tamano
-- fuerte acoplamiento entre logica, red y presentacion
-- secretos/configuracion mezclados con UI
+- Componente único de gran tamaño
+- fuerte acoplamiento entre lógica, red y presentacion
+- secretos/configuración mezclados con UI
 - textos con encoding inconsistente
 - ausencia de tipado y pruebas
 
@@ -157,7 +163,7 @@ Separar en estas capas:
 4. `utils/`
 5. `config/`
 
-Particion sugerida:
+Partición sugerida:
 
 - `useAudioPlayer`
 - `useLyricsSearch`
